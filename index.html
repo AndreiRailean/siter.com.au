@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>SITER. internet ideas.</title>
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-94183-2']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+
+        // window.onload = function() {
+        //     ga = document.createElement("script");
+        //     ga.src = "raphael.js";
+        //     s.parentNode.insertBefore(ga, s);
+        //     ga = document.createElement("script");
+        //     ga.src = "site.js";
+        //     s.parentNode.insertBefore(ga, s);
+        // };
+	  })();
+	
+	</script>
+	<script src="raphael.js"></script>	
+</head>
+<body style="background-color: white; font-family: sans-serif; font-size: 10px;text-align: center;">
+	<a href="mailto:info@siter.com.au" style="color: #ddd; text-decoration: none;">info@siter.com.au</a>
+	<div style="margin: auto; position:relative;">
+		<div id="graphics" style="margin-bottom: -300px;"></div>			
+			<img src="siter.png" alt="SITER internet ideas" />
+	</div>
+	
+	<script type="text/javascript" charset="utf-8">
+	// Canvas is created at the top left corner of the #notepad element
+	// (or its top right corner in dir="rtl" elements)
+	var paper = Raphael("graphics", 700, 300);
+
+	var x_lines = 10;
+	var lines = {};
+
+	var interval_id = setInterval("draw_line()", 1000);
+	//setTimeout("stop_anim()", 5000);
+
+	function stop_anim(){
+		clearInterval(interval_id);
+	}
+	
+	function draw_line() {
+		var rgb = ["0","0","0"];
+		// var col = Math.round(Math.random()*3);
+		rgb[0]=Math.floor(Math.random()*255);
+		rgb[1]=Math.floor(Math.random()*255);
+		rgb[2]=Math.floor(Math.random()*255);
+		
+		var colwidth = Math.round(Math.random()*200);
+		var pos = Math.round(Math.random()*700);
+		var line = Math.round(Math.random()*10);
+		if (!lines[line]) {
+		 	lines[line] = paper.rect(pos, 0, colwidth,300).attr({fill: "rgb("+rgb+")", stroke:null, "fill-opacity": 0.2});
+		} else {
+			var stripe = lines[line];
+			stripe.animate({x: pos, width: colwidth, fill: "rgb("+rgb+")"}, 300);
+		}
+	}
+	
+	</script>
+</body>
+</html>
